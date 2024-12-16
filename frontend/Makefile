@@ -1,5 +1,5 @@
 FRONTEND_DIR=frontend
-BACKEND_DIR=backend
+BACKEND_DIR=../backend
 
 INSTALL_FRONTEND=$(FRONTEND_DIR)/node_modules
 INSTALL_BACKEND=$(BACKEND_DIR)/node_modules
@@ -13,7 +13,7 @@ build: run-backend build-frontend
 # Установка зависимостей для frontend
 install-frontend:
 	@echo "Installing frontend dependencies..."
-	cd $(FRONTEND_DIR) && npm ci
+	npm ci
 
 # Установка зависимостей для backend
 install-backend:
@@ -22,7 +22,7 @@ install-backend:
 
 build-frontend: 
 	@echo "Starting frontend development server..."
-	cd $(FRONTEND_DIR) && npm run build
+	npm run build
 run-backend:
 	@echo "Starting backend server..."
 	cd $(BACKEND_DIR) && node server.js &
@@ -30,4 +30,4 @@ run-backend:
 # Запуск frontend (клиент)
 run-frontend:
 	@echo "Starting frontend development server..."
-	cd $(FRONTEND_DIR) && npm run dev
+	npm run dev
