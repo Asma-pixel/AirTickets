@@ -27,7 +27,9 @@ export const fetchCurrencies = createAsyncThunk<
     };
   }
   try {
-    const response = await axios.get(import.meta.env.VITE_CURRENCY_API_URL, {
+
+    const url = import.meta.env.VITE_CURRENCY_API_URL
+    const response = await axios.get(url, {
       headers: {
         apikey: import.meta.env.VITE_CURRENCY_API_KEY,
       },
@@ -36,6 +38,7 @@ export const fetchCurrencies = createAsyncThunk<
         symbols: "EUR,USD,RUB",
       },
     });
+    console.log(response.data);
     return response.data.rates;
   }
   catch (e) {
