@@ -11,7 +11,6 @@ import { fetchCurrencies } from "./store/currenciesSlice.ts";
 
 function App() {
   const dispatch = useAppDispatch();
-  console.log(import.meta.env);
   const isFetched = useAppSelector(
     (state) => state.currenciesReducer.isFetched,
   );
