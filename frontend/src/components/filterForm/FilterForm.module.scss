@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 220px;
+  gap: 36px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  height: fit-content;
+
+  h2 {
+    margin-bottom: 12px;
+  }
+}
+
+.filtersContainer {
+
+
+  .checkboxesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

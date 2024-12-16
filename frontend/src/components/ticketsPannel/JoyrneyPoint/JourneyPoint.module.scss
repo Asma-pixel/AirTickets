@@ -1,0 +1,27 @@
+.container {
+
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  max-width: 35%;
+
+  h3 {
+    font-size: 42px;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .countryInfo {
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .dateInfo {
+    font-weight: 300;
+    color: gray;
+  }
+
+}

@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: rgb(238, 126, 46);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    width: 100%;
+
+    &:hover {
+      background-color: rgb(247, 144, 70);
+    }
+
+    &:active {
+      background-color: rgb(255, 106, 0);
+    }
+  }
+
+
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  padding: 15px;
+  gap: 14px;
+  border-right: 1px solid rgba($color: #8b8b8b, $alpha: 0.5);
+}
+
+.informationContainer {
+
+  display: flex;
+  padding: 20px;
+}
