@@ -19,12 +19,7 @@ const TicketsPannel = () => {
   useEffect(() => {
     const loadTickets = async () => {
       const activeFilters = filters.filter((filter: Filter) => filter.isActive);
-      console.log(activeFilters);
-      try {
-        await dispatch(fetchTickets(activeFilters)).unwrap();
-      } catch (err) {
-        console.error("Failed to fetch tickets:", err);
-      }
+      await dispatch(fetchTickets(activeFilters)).unwrap();
     };
 
     loadTickets();

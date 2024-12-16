@@ -26,16 +26,26 @@ export const fetchCurrencies = createAsyncThunk<
       RUB: 1,
     };
   }
-  const response = await axios.get("https://api.apilayer.com/fixer/latest", {
-    headers: {
-      apikey: import.meta.env.VITE_CURRENCY_API_KEY,
-    },
-    params: {
-      base: "RUB",
-      symbols: "EUR,USD,RUB",
-    },
-  });
-  return response.data.rates;
+  try {
+    const response = await axios.get(import.meta.env.VITE_CURRENCY_API_URL, {
+      headers: {
+        apikey: import.meta.env.VITE_CURRENCY_API_KEY,
+      },
+      params: {
+        base: "RUB",
+        symbols: "EUR,USD,RUB",
+      },
+    });
+    return response.data.rates;
+  }
+  catch (e) {
+    console.log('Не удалось получить корректные рейты');
+    return {
+      EUR: 0.009187,
+      USD: 0.009662,
+      RUB: 1,
+    };
+  }
 });
 
 const initialState: CurrenciesState = {

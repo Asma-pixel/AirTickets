@@ -15,6 +15,7 @@ function App() {
     (state) => state.currenciesReducer.isFetched,
   );
   useEffect(() => {
+
     if (!isFetched) {
       dispatch(fetchCurrencies());
     }

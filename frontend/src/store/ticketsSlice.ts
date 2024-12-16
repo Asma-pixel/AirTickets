@@ -13,27 +13,31 @@ const currentFilter = {
 export const fetchTickets = createAsyncThunk<Ticket[], Filter[]>(
   "tickets/fetchAll",
   async (filters) => {
-    console.log(import.meta.env);
+    try {
+      const ticketsUrl = import.meta.env.VITE_API_TICKETS_URL;
+      const fakeFilter = filters.find((filter) => filter.name === "allTickets");
+      if (filters.length === 0 || fakeFilter) {
+        const response = await axios.get(ticketsUrl);
+        const tickets = response.data;
+        return tickets as Ticket[];
+      }
+      const formattedStops = filters
+        .map((filter) => currentFilter[filter.name as keyof typeof currentFilter])
+        .filter(Boolean)
+        .join(",");
 
-    const ticketsUrl = import.meta.env.VITE_API_TICKETS_URL;
-    console.log(ticketsUrl);
-    const fakeFilter = filters.find((filter) => filter.name === "allTickets");
-    if (filters.length === 0 || fakeFilter) {
-      const response = await axios.get(ticketsUrl);
+      const queryString = `stops=${formattedStops}`;
+      const response = await axios.get(`${ticketsUrl}?${queryString}`);
       const tickets = response.data;
+
+      console.log(tickets);
       return tickets as Ticket[];
     }
-    const formattedStops = filters
-      .map((filter) => currentFilter[filter.name as keyof typeof currentFilter])
-      .filter(Boolean)
-      .join(",");
+    catch (e) {
+      console.log('Не удалось загрузить билеты');
+      return [] as Ticket[];
+    }
 
-    const queryString = `stops=${formattedStops}`;
-    const response = await axios.get(`${ticketsUrl}?${queryString}`);
-    const tickets = response.data;
-
-    console.log(tickets);
-    return tickets as Ticket[];
   },
 );
 
