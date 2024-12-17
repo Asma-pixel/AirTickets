@@ -1,5 +1,6 @@
 FRONTEND_DIR=frontend
 BACKEND_DIR=../backend
+API_DIR=${BACKEND_DIR}/api
 
 INSTALL_FRONTEND=$(FRONTEND_DIR)/node_modules
 INSTALL_BACKEND=$(BACKEND_DIR)/node_modules
@@ -25,7 +26,7 @@ build-frontend:
 	npm run build
 run-backend:
 	@echo "Starting backend server..."
-	cd $(BACKEND_DIR) && node server.js &
+	cd $(API_DIR) && node server.js &
 
 # Запуск frontend (клиент)
 run-frontend:
